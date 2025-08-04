@@ -43,14 +43,9 @@ export function requestVault(requestedUrl: string, ignoreCertificateChecks: bool
             keepAlive: true 
         });
 
+        // Always enforce certificate validation for HTTPS connections
         if(ignoreCertificateChecks){
-            console.log("[INFO] Ignore certificate checks : 'True'");
-            agentHTTPS = new https.Agent({ 
-                keepAlive: true,
-                rejectUnauthorized: false
-            });
-            // WARNING: Disabling certificate validation is dangerous and should not be used in production.
-            // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // Removed to avoid global certificate validation disablement
+            console.log("[INFO] Ignore certificate checks : 'True' (certificate validation will NOT be disabled)");
         }
         else{
             console.log("[INFO] Ignore certificate checks : 'False'");
