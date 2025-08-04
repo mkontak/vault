@@ -49,7 +49,8 @@ export function requestVault(requestedUrl: string, ignoreCertificateChecks: bool
                 keepAlive: true,
                 rejectUnauthorized: false
             });
-            process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+            // WARNING: Disabling certificate validation is dangerous and should not be used in production.
+            // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // Removed to avoid global certificate validation disablement
         }
         else{
             console.log("[INFO] Ignore certificate checks : 'False'");
